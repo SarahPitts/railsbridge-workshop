@@ -80,4 +80,10 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def upvote
+    @topic = Topic.find(params[:id])
+    @topic.votes.create
+    redirect_to(topics_path)
+  end
 end
